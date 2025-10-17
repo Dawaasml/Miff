@@ -9,7 +9,9 @@
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "translate:local": "node scripts/translate-local-runner.mjs"
+    "translate:local": "node scripts/translate-local-runner.mjs",
+    "translate:api": "node scripts/translate-on-push.mjs",
+    "translate:stubs": "node scripts/generate-stub-translations.mjs"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.9",

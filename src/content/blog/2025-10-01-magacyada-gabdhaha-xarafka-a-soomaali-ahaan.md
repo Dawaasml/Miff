@@ -3,10 +3,13 @@ title: Magacyada Gabdhaha || Xarafka "A" Soomaali ahaan
 date: 2025-10-01T09:00:18.955Z
 image: /images/a-a-a.jpg
 category: Health
-excerpt: Afnaan, Axlaam, Asmaa, Amaal, Ayaan, Aamino, Aasiya, Amiira, Ashawaaq, Az-haar
-author: "P. A: Sadik Mohamed"
+excerpt: 'Afnaan, Axlaam, Asmaa, Amaal, Ayaan, Aamino, Aasiya, Amiira, Ashawaaq, Az-haar'
+author: 'P. A: Sadik Mohamed'
 readTime: 5 min read
 language: so
+translations:
+  en: 2025-10-01-magacyada-gabdhaha-xarafka-a-soomaali-ahaan
+  so: 2025-10-01-magacyada-gabdhaha-xarafka-a-soomaali-ahaan
 ---
 <!--\[if gte mso 9]><xml>
  <o:OfficeDocumentSettings>

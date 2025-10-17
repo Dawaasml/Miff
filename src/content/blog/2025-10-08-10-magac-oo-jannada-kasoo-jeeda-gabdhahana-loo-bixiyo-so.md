@@ -1,25 +1,16 @@
 ---
-title: Best ways to improve kids’ Mentality
-date: 2025-10-13T15:47:07.172Z
-image: /images/4.jpg
-category: Parenting
-excerpt: "Based on child development research and practical community experience:\n________________________________________\n\U0001F9E0 1. Encourage Curiosity and Critical Thinking\n•\tLet children ask “why” and “how” questions freely.\n•\tUse real-life examples and let them explore ideas through play, drawing, or small "
+title: 10 Magac oo Jannada Kasoo Jeeda Gabdhahana Loo Bixiyo
+date: 2025-10-08T09:12:49.306Z
+image: /images/10-ka-magac-logo.jpg
+category: Magacyada Carruurta
+excerpt: 'P. A. Sadik Mohamed '
 author: P. A. Sadik Mohamed
 readTime: 5 min read
-language: en
+language: so
 translations:
-  en: 2025-10-13-best-ways-to-improve-kids’-mentality
-  so: 2025-10-13-best-ways-to-improve-kids’-mentality-so
+  en: 2025-10-08-10-magac-oo-jannada-kasoo-jeeda-gabdhahana-loo-bixiyo
+  so: 2025-10-08-10-magac-oo-jannada-kasoo-jeeda-gabdhahana-loo-bixiyo-so
 ---
-<!--\[if !mso]>
-<style>
-v\:* {behavior:url(#default#VML);}
-o\:* {behavior:url(#default#VML);}
-w\:* {behavior:url(#default#VML);}
-.shape {behavior:url(#default#VML);}
-</style>
-<!\[endif]-->
-
 <!--\[if gte mso 9]><xml>
  <o:OfficeDocumentSettings>
   <o:AllowPNG/>
@@ -676,81 +667,194 @@ w\:* {behavior:url(#default#VML);}
 
 <!--StartFragment-->
 
+ASC.
 
+Waxaan maantaan idiin soo gudbin doonaa
 
-- - -
+TOBAN MAGAC oo gabdhaha loo bixiyo, asal ahaanna ka soo jeeda JANNADA,
 
-**🧠 1. Encourage Curiosity and Critical Thinking**
+Yaa salaam, alahyoow kuwii jannada xisaab ku gala naga mid dhig, aamiin dhaha walaaleyaal,
 
-* Let children ask *“why”* and *“how”* questions freely.
-* Use real-life examples and let them explore ideas through play, drawing, or small experiments.
-* Avoid giving ready-made answers all the time — guide them to find answers themselves.
+Inaangoo maanka ku hayna, magacyadan inay dad yar inay yaqaanaan,
 
-- - -
+Anigoo huba inaad jeclaan lahayd inad magacyadan ogaatid, kahor intuusan Allaah gabar kugu ARZAAQIN,
 
-**💬 2. Teach Emotional Intelligence**
+Si’aad uhesho maagc qurux badanoo gabdhaada istaahila inaad ubixiso,
 
-* Help kids name and understand their feelings (happy, sad, angry, scared).
-* Teach empathy — ask how others might feel in a situation.
-* Model calmness and respect when resolving conflicts.
+In magac qurux badan gabdhah loo bixiyo, ama guud ahaan caruurtana, waa SUNNE rasuulka CSW uu ina fary,
 
-- - -
+<!--\[if !supportLists]-->1.    <!--\[endif]-->SIDRA:
 
-**📚 3. Build a Growth Mindset**
+Magagaca SIDRA, waxaa lagu tiriyaa inuu yahay magac asal ahaan kasoo jeeda luuqadda Carabiga, lana micno yahay GEED caleentiis, labo noocn ah:
 
-* Praise **effort**, not just success (“You worked hard,” instead of “You’re smart”).
-* Teach that mistakes are part of learning.
-* Share your own stories of failure and how you improved.
+Kuwaasooo kala ah geed qodxo leh iyo mid aana lahayn,
 
-- - -
+ 
 
-**🤝 4. Promote Cooperation and Teamwork**
+Waxaana lasheegay geedkan SIDRA inuu ku yaallo samada TODBAAD, ayna ku kulmaan Malaa’igtu, isagooo ku yaalla dhinac midig ee Carshiga Alle,
 
-* Let kids join group games, school clubs, or community clean-ups.
-* Encourage sharing and taking turns.
-* Teach them that helping others makes everyone stronger.
+ 
 
-- - -
+Geedkaas qofka gaarana wuxuu gaaray yool halka ugu saraysa, waana meesha culuumta mashluuqaadku ay ku dhammaadaan
 
-**🎨 5. Encourage Creativity and Imagination**
+ 
 
-* Provide art materials, storytelling, and music.
-* Let them create their own stories, songs, or drawings — even if imperfect.
-* Celebrate originality more than perfection.
+<!--\[if !supportLists]-->**2.**    <!--\[endif]-->**SUNDUS:**
 
-- - -
+Magaca SUNDUS, waa magac asal ahaan kasoo jeeda FURUS, waana magac dhadigeed, calashaan waa magac gabdhaha loo bixiyo,
 
-**🌿 6. Connect Them with Nature and Real Life**
+Waana magac loo bixiyo dharka midabka cagaarka ah, aadkana ujilicsan marka lamadginayo,
 
-* Let kids experience farming, caring for animals, planting trees, or cleaning the environment.
-* Such experiences build responsibility, calmness, and awareness of life around them.
+ 
 
-- - -
+ 
 
-**💪 7. Teach Problem-Solving Skills**
+ 
 
-* Use simple challenges (“What can we do if it rains during our game?”).
-* Encourage them to think of more than one solution before acting.
+ 
 
-- - -
+ 
 
-**❤️ 8. Give Positive Role Models**
+ 
 
-* Be the example: show honesty, kindness, and self-discipline.
-* Introduce them to local heroes, peacebuilders, and innovators.
+ 
 
-- - -
+ 
 
-**🕊️ 9. Create a Peaceful and Supportive Home/School Environment**
+ 
 
-* Avoid shouting or physical punishment — use calm guidance and explanation.
-* Make kids feel heard and safe expressing their thoughts.
+ 
 
-- - -
+ 
 
-**📱 10. Limit Negative Media Influence**
+ 
 
-* Monitor what they watch and play.
-* Encourage educational, cultural, and peaceful content.
+<!--\[if !supportLists]-->**3.**    <!--\[endif]-->**KAWTHAR:**
+
+Magaca Kawthar, waa magac asal ahaan luuqadda Carabiga kasoo jeeda, gabdhahana loo bixiyo,
+
+Macnihiisuna waa: magac huwan kheyr, barako iyo hanti badan,
+
+Sidaas oo ay tahay, ayaa hadana waxaa loogu magac daray mid kamid ah WABIYADA JANNADA mara.
+
+Waxaa kaloo lasheegay magac Kawthar inuu yahay mid kamid ah wabiyada Jannada ku yaalla,
+
+Waana wabi biyihiisu ay aad ucad yihiin, heer uu gaaro inuu caanaha ka cad yahay, kana macaan yahay MALABKA
+
+Ilaahaw naga dhig kuwa wabigaas ka caba
+
+ 
+
+<!--\[if !supportLists]-->**4.**    <!--\[endif]-->**AFNAAN:**
+
+Magaca Afnaan, waa magac buslho weynta Soomaaliyeed aad ugu dhex faafay, gabdhaha Soomaaliyeedna loo bixiyo, Carabtuna ay labaxaan,
+
+ 
+
+Sidaadarteed, magaca Afnaan macnihiisu waa QAYBO ama LAAMO,
+
+Isagoo magacani Quraanka kariimka ah lagu xusay.
+
+ 
+
+Waxaa kaloo Afnaan lagu macneeyaa inuu yahay, shay aad uqiimo badan, aadna usareeya,
+
+Iyadoo ladhoho AFNAAN waa asalka KHEYRKA, wanaagga iyo QURUXDA,
+
+ 
+
+<!--\[if !supportLists]-->**5.**    <!--\[endif]-->**SALSABIIL:**
+
+Magaca SALSABIIL, waxaa latilmaamaa inuu yahay IL jannada ku taalla,
+
+Iyadoo lasheego inay tahay il aad ubiyo macaan, marka ishaas biyeheedu ay socdaanna ku socda xawaare aad usareeya.
+
+<!--\[if !supportLists]-->**6.**    <!--\[endif]-->**TASNIIM:**
+
+Magac tasniim, waa magac asalkiisu Carabi yahay, kuna soo arooray Quraanka kariimka ah.
+
+ Waana magac ay lee dahay IL jannada ku taalla, ishaas oo ay ka cabbaan adoomada Allaah ee loo yaqaanno **AL-MUQARRABUUN,**
+
+ 
+
+<!--\[if !supportLists]-->7.    <!--\[endif]-->J**ANAA**
+
+Magac JANAA, waa magac isaguna asalkiisu Carabi yahay, loona bixiyo gabdhaha,
+
+Waxaana loo badiyaa magacani inuu yahay jamac, marka loo eego sida uu muqaddaska uyahay marka keli loo istocmaalo ama mufrad,
+
+Waayo jannadu asal ahaan waa beer,
+
+Sidoo kale magacani wuxuu huwan yahay muuqaal DIINI ah, halka uu kusoo arooray magacani QURAANKA inbdan, loona isticmaaly hab MUFRAD IYO JAMAC AH,
+
+Loona eegay maqaamka uu joogo ee kheyrka iyo wanaagga ah,
+
+Iyagoo dadku gabdhooda ugu bixiya magacany qiimaha iyo quruxda uu lee yahay awgiis.
+
+<!--\[if !supportLists]-->8.    <!--\[endif]-->JINAAN
+
+Magaca JINAAN, waa magac asal ahaan Carabi ah, gabdhahana loo bixiyo,
+
+Waana magac kaloo jannadu ay lee dahay, waxaana loogu bixiyay, inay lee dahay geedo aad ubalballaaran oo ay jannada ku dahaarto, calashaan ku qariso,
+
+Waxaana laga keenay ficilka JUNNAH,
+
+ 
+
+<!--\[if !supportLists]-->**9.**    <!--\[endif]-->**LU’LUA**
+
+Magac lu’lua’ asal ahaan wa CARABI, waxaan lagasoo min guuriyay, AL-LU’LU’AAT,
+
+Waxaana lasheegaa in laga helo badda dhexdeeda, nooca ugu qaalisanna uu yahay nooca cad cad,
+
+Isagoo magacani lagu sheegay quraanka kariimka ah, (, isagoo magacan laga reebay TA’ GAABTA KU  JIRTA.
+
+ 
+
+<!--\[if !supportLists]-->**10.**<!--\[endif]-->**XUUR**
+
+Magaca XUUR, isaguna asal ahaan waa CARABI,
+
+Isagoo macnihiisa laga wado, GABADH aad ucad, indhaheeduna aadka ay umadow yihiin,
+
+Waxaa kalo lasheegaa magca XUUR macnihiisu inuu yahay, gabdha indhaheedu ay wayn yihiin, islamarkaan BU’DA dhexe ee ishu ay aad umadow daahy, waxaana lasheegaa inay tahay tilmaan kamid ah quruxda hablaha,
+
+Waxaa kalo lasheegaa XUUR inay lamacno tahay caddaanta iyo quruxda,
+
+Isagoo magacani kusoo arooray QURAANKA KARIIMKA AH.
+
+ 
+
+Tobankaas magac aay ahaayeen tobanka magac ee gabdhaha loo bixin karo ee jannada kasoo jeeda,
+
+Quraanka kariimka ahna lagu sheegay,
+
+Islamarkaana ah magacyo jannada lagu tilmaamay,
+
+Maagcyo jannada loo bixiyay,
+
+Ayna mudan yihiin inaan gabdhheena ubixinno,
+
+Gabdhihiina aad ubixisaan,
+
+ 
+
+Sidaadarteed, gaba-gabadii waxaan lee yahay:
+
+Hooyo iyo aabe, ha noqdaan maagcyada aad gabdhihiina ubixinaysaan, magacyo uqalma inaad gabdhihiina ubixisaa, waa midda koobaad,
+
+Midda labaadna, ha noqdaan magacyadaasi magacyo asalkooda ay yihiin kuwo diinteena suuban ee islaamka kasoo jeeda,
+
+Waayo magac kastoo wanaagsan, qiimo badan, wuxuu si cad uga turjumayaa haybadda gabadhaada, quruxda gabdhaada, qiimaha iyo asluubta gabdhaada,
+
+Magac kastoo qaab daran oo aad ubixiso gabadhaadana wuxuu ka dhignaanayaa, taas badalkeeda,
+
+ 
+
+Waadna mahadsan tihiin.
+
+ 
+
+Qore: P.A. Sadik Mohamed
 
 <!--EndFragment-->

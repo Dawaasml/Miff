@@ -2,14 +2,14 @@
 title: 'STEM Education for Kids: Building Future Innovators'
 date: 2024-09-15T10:15:00.000Z
 image: /images/arabic-mother-boy-beautiful-little-56833845.webp
-category: Education
+category: Waxbarasho
 excerpt: >-
   Discover how to introduce Science, Technology, Engineering, and Mathematics to
   children in engaging, age-appropriate ways that spark curiosity and
   creativity.
 author: Mr. Mifta
 readTime: 11 min read
-language: en
+language: so
 translations:
   en: 2024-09-15-stem-education-kids
   so: 2024-09-15-stem-education-kids-so

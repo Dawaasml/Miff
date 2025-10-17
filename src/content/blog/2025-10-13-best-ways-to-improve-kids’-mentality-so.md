@@ -2,11 +2,11 @@
 title: Best ways to improve kids’ Mentality
 date: 2025-10-13T15:47:07.172Z
 image: /images/4.jpg
-category: Parenting
+category: Barbaarinta Carruurta
 excerpt: "Based on child development research and practical community experience:\n________________________________________\n\U0001F9E0 1. Encourage Curiosity and Critical Thinking\n•\tLet children ask “why” and “how” questions freely.\n•\tUse real-life examples and let them explore ideas through play, drawing, or small "
 author: P. A. Sadik Mohamed
 readTime: 5 min read
-language: en
+language: so
 translations:
   en: 2025-10-13-best-ways-to-improve-kids’-mentality
   so: 2025-10-13-best-ways-to-improve-kids’-mentality-so

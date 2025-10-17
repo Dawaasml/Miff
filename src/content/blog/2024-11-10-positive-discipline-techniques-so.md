@@ -3,14 +3,14 @@ title: 'Positive Discipline: Raising Confident and Respectful Children'
 date: 2024-11-10T11:00:00.000Z
 image: >-
   /images/muslim-family-gathers-in-their-living-room-pray-together-during-eid-al-fitr-as-soft-sunlight-filters-through-windows-creating-peaceful-and-reflective-environment-photo.jpeg
-category: Parenting
+category: Barbaarinta Carruurta
 excerpt: >-
   Learn effective positive discipline strategies that build character,
   strengthen relationships, and teach children valuable life skills without
   punishment.
 author: Mr. Mifta
 readTime: 9 min read
-language: en
+language: so
 translations:
   en: 2024-11-10-positive-discipline-techniques
   so: 2024-11-10-positive-discipline-techniques-so

@@ -2,13 +2,13 @@
 title: 'Beautiful Islamic Baby Names: Meaningful Choices for Muslim Families'
 date: 2024-08-10T14:30:00.000Z
 image: /images/hero-baby-names.jpg
-category: Baby Names
+category: Magacyada Carruurta
 excerpt: >-
   Discover beautiful Islamic baby names with deep spiritual meanings, honoring
   prophets, companions, and Islamic values for your precious child.
 author: Mr. Mifta
 readTime: 8 min read
-language: en
+language: so
 translations:
   en: 2024-08-10-islamic-baby-names
   so: 2024-08-10-islamic-baby-names-so

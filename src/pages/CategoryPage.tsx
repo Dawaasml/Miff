@@ -4,6 +4,7 @@ import Layout from '@/components/Layout';
 import ArticleCard from '@/components/ArticleCard';
 import Sidebar from '@/components/Sidebar';
 import { useTranslation } from '@/contexts/TranslationContext';
+import { Helmet } from 'react-helmet-async';
 import heroHealthImage from '@/assets/hero-health-nutrition.jpg';
 import heroParentingImage from '@/assets/hero-parenting.jpg';
 import heroQuranImage from '@/assets/hero-quran.jpg';
@@ -74,6 +75,12 @@ const CategoryPage = () => {
 
   return (
     <Layout>
+      <Helmet>
+        <title>{`${info.title} | Miftah Som Academy`}</title>
+        <meta name="description" content={info.description} />
+        <meta property="og:title" content={`${info.title} | Miftah Som Academy`} />
+        <meta property="og:description" content={info.description} />
+      </Helmet>
       {/* Category Header */}
       <div className="bg-aljazeera-blue text-white py-16">
         <div className="container mx-auto px-4">

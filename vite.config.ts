@@ -6,6 +6,20 @@ import { copyFileSync, mkdirSync, existsSync, readdirSync, readFileSync, writeFi
 import matter from "gray-matter";
 import { marked } from "marked";
 
+// Minimal HTML sanitizer suitable for static content at build-time
+// Removes <script> tags, event handler attributes, and javascript: URLs
+const sanitizeHtmlString = (unsafeHtml: string): string => {
+  if (!unsafeHtml) return unsafeHtml;
+  let out = unsafeHtml;
+  // Remove script/style/iframe objects entirely
+  out = out.replace(/<\s*(script|style|iframe|object|embed)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, "");
+  // Remove on* event handler attributes (e.g., onclick)
+  out = out.replace(/\son[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "");
+  // Neutralize javascript: and data: URLs in href/src
+  out = out.replace(/\s(href|src)\s*=\s*("|')\s*(javascript:|data:)/gi, ' $1=$2#');
+  return out;
+};
+
 // Plugin to copy admin files during build
 const copyAdminFiles = () => {
   return {
@@ -79,7 +93,7 @@ const generatePostsJson = () => {
         const posts = files.map((file) => {
           const raw = readFileSync(file, 'utf8');
           const { content, data } = matter(raw);
-          const html = marked.parse(content) as string;
+          const html = sanitizeHtmlString(marked.parse(content) as string);
           const slug = toSlug(file);
           // Infer language if missing using filename suffix and Somali category labels
           const base = path.basename(file).replace(/\.md$/, '');

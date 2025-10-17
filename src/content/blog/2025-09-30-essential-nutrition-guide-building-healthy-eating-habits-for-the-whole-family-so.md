@@ -2,14 +2,14 @@
 title: 'Essential Nutrition Guide: Building Healthy Eating Habits for the Whole Family'
 date: 2025-09-30T17:40:50.140Z
 image: /images/a-a-a.jpg
-category: Health
+category: Caafimaad
 excerpt: >-
   Discover comprehensive strategies for maintaining optimal health through
   balanced nutrition, including practical meal planning tips and evidence-based
   dietary recommendations that work for busy families.
 author: Dr. Amina Hassan
 readTime: 8 min read
-language: en
+language: so
 translations:
   en: >-
     2025-09-30-essential-nutrition-guide-building-healthy-eating-habits-for-the-whole-family

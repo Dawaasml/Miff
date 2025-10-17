@@ -2,13 +2,13 @@
 title: 'Nutrition for Growing Children: Building Healthy Eating Habits'
 date: 2024-12-01T09:30:00.000Z
 image: /images/0969a0a39d1357a6f26f0308e4fee020.jpg
-category: Health
+category: Caafimaad
 excerpt: >-
   Essential nutrition guidelines for children of all ages, including meal
   planning tips, healthy snack ideas, and dealing with picky eaters.
 author: Mr. Sadik Mohamed
 readTime: 8 min read
-language: en
+language: so
 translations:
   en: 2024-12-01-nutrition-for-children
   so: 2024-12-01-nutrition-for-children-so

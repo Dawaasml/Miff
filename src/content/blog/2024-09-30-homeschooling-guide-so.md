@@ -2,13 +2,13 @@
 title: 'Homeschooling Success: A Comprehensive Guide for Modern Families'
 date: 2024-09-30T16:20:00.000Z
 image: /images/beba2a4beb27124575b314fdae8262c1.jpg
-category: Education
+category: Waxbarasho
 excerpt: >-
   Explore the world of homeschooling with practical strategies, curriculum
   options, and tips for creating an effective learning environment at home.
 author: Mr. Mifta
 readTime: 12 min read
-language: en
+language: so
 translations:
   en: 2024-09-30-homeschooling-guide
   so: 2024-09-30-homeschooling-guide-so

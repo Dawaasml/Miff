@@ -2,13 +2,13 @@
 title: 'Somali Culture and Traditions: Preserving Heritage for Future Generations'
 date: 2024-05-20T16:45:00.000Z
 image: /images/1.webp
-category: Education
+category: Waxbarasho
 excerpt: >-
   Explore the rich tapestry of Somali culture, traditions, and values, and learn
   how to pass them on to children in meaningful ways.
 author: Mr. Mifta
 readTime: 8 min read
-language: en
+language: so
 translations:
   en: 2024-05-20-somali-culture-traditions
   so: 2024-05-20-somali-culture-traditions-so

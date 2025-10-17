@@ -248,10 +248,25 @@ const translations = {
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined);
 
 export const TranslationProvider: React.FC<TranslationProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<string>('so');
+  const [language, setLanguage] = useState<string>(() => {
+    try {
+      const saved = localStorage.getItem('lang');
+      return saved === 'en' || saved === 'so' ? saved : 'so';
+    } catch {
+      return 'so';
+    }
+  });
+
+  // Keep <html lang> in sync
+  React.useEffect(() => {
+    try {
+      document.documentElement.setAttribute('lang', language);
+      localStorage.setItem('lang', language);
+    } catch {}
+  }, [language]);
 
   const toggleLanguage = useCallback(() => {
-    setLanguage(prev => prev === 'en' ? 'so' : 'en');
+    setLanguage(prev => (prev === 'en' ? 'so' : 'en'));
   }, []);
 
   const t = useCallback((key: string): string => {

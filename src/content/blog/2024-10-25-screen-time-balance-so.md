@@ -2,13 +2,13 @@
 title: 'Balancing Screen Time: Raising Digital-Native Children'
 date: 2024-10-25T15:30:00.000Z
 image: /images/hero-parenting.jpg
-category: Parenting
+category: Barbaarinta Carruurta
 excerpt: >-
   Navigate the digital age with your children by finding healthy balance between
   screen time and real-world experiences.
 author: Mr. Mifta
 readTime: 8 min read
-language: en
+language: so
 translations:
   en: 2024-10-25-screen-time-balance
   so: 2024-10-25-screen-time-balance-so

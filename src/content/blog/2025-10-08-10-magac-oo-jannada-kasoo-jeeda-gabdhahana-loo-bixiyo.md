@@ -3,10 +3,13 @@ title: 10 Magac oo Jannada Kasoo Jeeda Gabdhahana Loo Bixiyo
 date: 2025-10-08T09:12:49.306Z
 image: /images/10-ka-magac-logo.jpg
 category: Baby Names
-excerpt: "P. A. Sadik Mohamed "
+excerpt: 'P. A. Sadik Mohamed '
 author: P. A. Sadik Mohamed
 readTime: 5 min read
 language: en
+translations:
+  en: 2025-10-08-10-magac-oo-jannada-kasoo-jeeda-gabdhahana-loo-bixiyo
+  so: 2025-10-08-10-magac-oo-jannada-kasoo-jeeda-gabdhahana-loo-bixiyo-so
 ---
 <!--\[if gte mso 9]><xml>
  <o:OfficeDocumentSettings>

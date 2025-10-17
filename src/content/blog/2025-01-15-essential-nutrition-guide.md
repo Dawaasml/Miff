@@ -3,17 +3,14 @@ title: 'Hagaha Caafimaadka: Dhiska Caadada Cuntada Caafimaadka ee Qoyska'
 date: 2025-01-15T10:00:00.000Z
 image: >-
   /images/muslim-family-view-mosque-muslim-family-eid-greetings-back-view-jumma-mubarak-photo.jpeg
-category: Caafimaad
+category: Health
 excerpt: >-
   Hel istiraatiijiyooyin dhamaystiran oo loogu talagalay ilaalinta caafimaadka
   si fiican, oo ay ku jiraan talooyin ku saabsan qorshaynta cuntada iyo talooyin
   ku salaysan xogta.
 author: Dr. Amina Hassan
 readTime: 8 daqiiqo oo akhris
-language: so
-translations:
-  en: 2025-01-15-essential-nutrition-guide
-  so: 2025-01-15-essential-nutrition-guide-so
+language: en
 ---
 
 # Hagaha Caafimaadka: Dhiska Caadada Cuntada Caafimaadka ee Qoyska

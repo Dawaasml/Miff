@@ -2,13 +2,13 @@
 title: 'Communicating with Teenagers: Building Bridges During the Turbulent Years'
 date: 2024-10-15T13:45:00.000Z
 image: /images/thumbnail_somali_woman_cfaaris_adam.jpg
-category: Parenting
+category: Barbaarinta Carruurta
 excerpt: >-
   Navigate the challenging but rewarding journey of communicating with
   teenagers, building trust and understanding during their formative years.
 author: Mr. Mifta
 readTime: 10 min read
-language: en
+language: so
 translations:
   en: 2024-10-15-teenage-communication
   so: 2024-10-15-teenage-communication-so
