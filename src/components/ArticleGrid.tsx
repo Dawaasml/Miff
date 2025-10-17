@@ -1,6 +1,7 @@
 import ArticleCard from './ArticleCard';
 import { useEffect, useState } from 'react';
 import { loadBlogPosts, type BlogPost } from '@/lib/contentLoader';
+import { selectCanonicalPerLanguage } from '@/lib/articleSelection';
 import { Link } from 'react-router-dom';
 import { useTranslation } from '@/contexts/TranslationContext';
 
@@ -37,56 +38,8 @@ const ArticleGrid = () => {
     };
   }, [language]);
 
-  const normalizeBaseKey = (slug: string): string => slug.replace(/-so$/i, '');
-
-  const preferLanguageAndDedup = (items: BlogPost[], lang: string): BlogPost[] => {
-    const slugToPost = new Map<string, BlogPost>();
-    for (const p of items) slugToPost.set(p.slug, p);
-
-    const byCanonical = new Map<string, BlogPost[]>();
-    const canonicalKey = (p: BlogPost): string => {
-      const linked = p.translations ? Object.values(p.translations) : [];
-      const group = [p.slug, ...linked].map(s => s.replace(/-so$/i, ''));
-      return group.sort()[0];
-    };
-
-    for (const p of items) {
-      const key = canonicalKey(p);
-      if (!byCanonical.has(key)) byCanonical.set(key, []);
-      byCanonical.get(key)!.push(p);
-    }
-
-    const selected: BlogPost[] = [];
-    for (const [, group] of byCanonical.entries()) {
-      // Prefer exact language
-      const exact = group.find(g => g.language === lang);
-      if (exact) {
-        selected.push(exact);
-        continue;
-      }
-      // Prefer mapped translation if present in dataset
-      const anyWithMapping = group.find(g => g.translations && g.translations[lang]);
-      if (anyWithMapping) {
-        const slug = anyWithMapping.translations![lang];
-        const mapped = slugToPost.get(slug);
-        if (mapped) {
-          selected.push(mapped);
-          continue;
-        }
-      }
-      // Otherwise skip to avoid showing wrong language
-    }
-    selected.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    return selected;
-  };
-
-  // Ensure parity: if no match or mapping, keep an English fallback to keep list length stable
-  const visibleArticles = (() => {
-    const selected = preferLanguageAndDedup(articles, language);
-    if (selected.length > 0) return selected;
-    // fallback to English canonical selection if nothing matched
-    return preferLanguageAndDedup(articles, 'en');
-  })();
+  // Ensure parity using shared selector
+  const visibleArticles = selectCanonicalPerLanguage(articles, language);
 
   if (loading) {
     return (

@@ -2,6 +2,7 @@ import ArticleCard from './ArticleCard';
 import { useTranslation } from '@/contexts/TranslationContext';
 import { useEffect, useState } from 'react';
 import { loadBlogPosts, type BlogPost } from '@/lib/contentLoader';
+import { selectCanonicalPerLanguage } from '@/lib/articleSelection';
 import { Link } from 'react-router-dom';
 
 const HeroSection = () => {
@@ -22,30 +23,7 @@ const HeroSection = () => {
   }, [language]);
 
   // Prefer current language; if no exact match available, try to follow translations mapping
-  const slugToPost = new Map<string, BlogPost>();
-  for (const p of posts) slugToPost.set(p.slug, p);
-  const canonicalKey = (p: BlogPost): string => {
-    const linked = p.translations ? Object.values(p.translations) : [];
-    const group = [p.slug, ...linked].map(s => s.replace(/-so$/i, ''));
-    return group.sort()[0];
-  };
-  const groups = new Map<string, BlogPost[]>();
-  for (const p of posts) {
-    const key = canonicalKey(p);
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key)!.push(p);
-  }
-  const pick = (group: BlogPost[]): BlogPost | undefined => {
-    const exact = group.find(g => g.language === language);
-    if (exact) return exact;
-    const anyWithMapping = group.find(g => g.translations && g.translations[language]);
-    if (anyWithMapping) {
-      const slug = anyWithMapping.translations![language];
-      return slugToPost.get(slug) || group[0];
-    }
-    return undefined; // skip if wrong language
-  };
-  const selected = Array.from(groups.values()).map(pick).filter(Boolean) as BlogPost[];
+  const selected = selectCanonicalPerLanguage(posts, language);
   const hero = selected[0];
   const side = selected.slice(1, 3);
 
