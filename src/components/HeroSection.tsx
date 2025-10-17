@@ -12,7 +12,8 @@ const HeroSection = () => {
   useEffect(() => {
     let mounted = true;
     (async () => {
-      const data = await loadBlogPosts(language);
+      // Always load all posts for stable grouping across languages
+      const data = await loadBlogPosts('all');
       if (mounted) setPosts(data);
     })();
     return () => {
@@ -20,8 +21,33 @@ const HeroSection = () => {
     };
   }, [language]);
 
-  const hero = posts[0];
-  const side = posts.slice(1, 3);
+  // Prefer current language; if no exact match available, try to follow translations mapping
+  const slugToPost = new Map<string, BlogPost>();
+  for (const p of posts) slugToPost.set(p.slug, p);
+  const canonicalKey = (p: BlogPost): string => {
+    const linked = p.translations ? Object.values(p.translations) : [];
+    const group = [p.slug, ...linked].map(s => s.replace(/-so$/i, ''));
+    return group.sort()[0];
+  };
+  const groups = new Map<string, BlogPost[]>();
+  for (const p of posts) {
+    const key = canonicalKey(p);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(p);
+  }
+  const pick = (group: BlogPost[]): BlogPost | undefined => {
+    const exact = group.find(g => g.language === language);
+    if (exact) return exact;
+    const anyWithMapping = group.find(g => g.translations && g.translations[language]);
+    if (anyWithMapping) {
+      const slug = anyWithMapping.translations![language];
+      return slugToPost.get(slug) || group[0];
+    }
+    return undefined; // skip if wrong language
+  };
+  const selected = Array.from(groups.values()).map(pick).filter(Boolean) as BlogPost[];
+  const hero = selected[0];
+  const side = selected.slice(1, 3);
 
   return (
     <section className="container mx-auto px-4 lg:px-6">

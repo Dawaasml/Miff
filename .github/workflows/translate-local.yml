@@ -1,0 +1,47 @@
+name: Translate Blog Posts (Local Models)
+
+on:
+  push:
+    paths:
+      - 'src/content/blog/**.md'
+      - 'scripts/translate_local.py'
+      - '.github/workflows/translate-local.yml'
+  workflow_dispatch:
+
+jobs:
+  translate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml python-frontmatter transformers torch --extra-index-url https://download.pytorch.org/whl/cpu
+
+      - name: Run translator (no API keys)
+        run: npm run translate:local
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n $(git status --porcelain) ]]; then
+            git add -A
+            git commit -m "chore: auto-translate blog posts (local models)"
+            git push
+          else
+            echo "No changes to commit."
+          fi
+

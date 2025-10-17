@@ -34,9 +34,11 @@ export interface HomePage {
 // Load blog posts. By default, returns posts of all languages to avoid hiding content
 // when the UI language is toggled. Pass languageFilter to restrict if needed.
 export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all'): Promise<BlogPost[]> => {
-  console.log("=== Starting loadBlogPosts ===");
-  console.log("Environment:", import.meta.env.MODE);
-  console.log("Base URL:", import.meta.env.BASE_URL);
+  if (import.meta.env.DEV) {
+    console.log("=== Starting loadBlogPosts ===");
+    console.log("Environment:", import.meta.env.MODE);
+    console.log("Base URL:", import.meta.env.BASE_URL);
+  }
   
   // In production, prefer posts.json for reliability
   if (import.meta.env.PROD) {
@@ -45,23 +47,23 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
   }
   
   try {
-    console.log("Development environment, trying dynamic imports...");
+    if (import.meta.env.DEV) console.log("Development environment, trying dynamic imports...");
     
     // Try different glob patterns to find the files
     const files = import.meta.glob("../content/blog/**/*.md", { query: "?raw", import: "default" });
     const entries = Object.entries(files);
-    console.log("Found blog files:", entries.length, entries.map(([path]) => path));
+    if (import.meta.env.DEV) console.log("Found blog files:", entries.length, entries.map(([path]) => path));
     
     if (entries.length === 0) {
-      console.log("No blog files found, trying alternative pattern...");
+      if (import.meta.env.DEV) console.log("No blog files found, trying alternative pattern...");
       // Try alternative pattern
       const altFiles = import.meta.glob("./content/blog/**/*.md", { query: "?raw", import: "default" });
       const altEntries = Object.entries(altFiles);
-      console.log("Alternative pattern found:", altEntries.length, altEntries.map(([path]) => path));
+      if (import.meta.env.DEV) console.log("Alternative pattern found:", altEntries.length, altEntries.map(([path]) => path));
       
       if (altEntries.length === 0) {
-        console.log("No files found with any pattern, trying posts.json fallback...");
-        return await loadPostsFromJson(language);
+        if (import.meta.env.DEV) console.log("No files found with any pattern, trying posts.json fallback...");
+        return await loadPostsFromJson(languageFilter);
       }
       
       // Use alternative entries
@@ -71,12 +73,12 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
     const { default: matter } = await import("gray-matter");
     const { marked } = await import("marked");
 
-    console.log("Processing", entries.length, "blog files...");
+    if (import.meta.env.DEV) console.log("Processing", entries.length, "blog files...");
 
     const posts: BlogPost[] = await Promise.all(
       entries.map(async ([path, loader], index) => {
         try {
-          console.log(`Processing file ${index + 1}/${entries.length}: ${path}`);
+          if (import.meta.env.DEV) console.log(`Processing file ${index + 1}/${entries.length}: ${path}`);
           const raw = await (loader as () => Promise<string>)();
           const parsed = matter(raw);
           const data = parsed.data as Partial<BlogPost> & { date?: string };
@@ -114,10 +116,10 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
             translations: (data as any).translations as Record<string, string> | undefined
           } as BlogPost;
           
-          console.log(`Successfully processed: ${post.title}`);
+          if (import.meta.env.DEV) console.log(`Successfully processed: ${post.title}`);
           return post;
         } catch (fileError) {
-          console.error(`Error processing file ${path}:`, fileError);
+          if (import.meta.env.DEV) console.error(`Error processing file ${path}:`, fileError);
           // Return a fallback post instead of failing completely
           return {
             title: `Error loading post ${index + 1}`,
@@ -135,19 +137,21 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
       })
     );
 
-    console.log("Successfully processed", posts.length, "posts");
+    if (import.meta.env.DEV) console.log("Successfully processed", posts.length, "posts");
     
     // Filter posts by language
     const finalPosts = languageFilter === 'all' 
       ? posts 
       : posts.filter(post => post.language === languageFilter);
-    console.log(`Posts after language filter (${languageFilter}): ${finalPosts.length}`);
+    if (import.meta.env.DEV) console.log(`Posts after language filter (${languageFilter}): ${finalPosts.length}`);
     
     finalPosts.sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
     return finalPosts;
   } catch (error) {
-    console.error("Error in loadBlogPosts:", error);
-    console.log("Falling back to posts.json...");
+    if (import.meta.env.DEV) {
+      console.error("Error in loadBlogPosts:", error);
+      console.log("Falling back to posts.json...");
+    }
     return await loadPostsFromJson(languageFilter);
   }
 };
@@ -155,21 +159,27 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
 // Fallback function to load posts from the generated posts.json file
 const loadPostsFromJson = async (languageFilter: 'en' | 'so' | 'all' = 'all'): Promise<BlogPost[]> => {
   try {
-    console.log("Loading posts from posts.json...");
-    console.log("Current URL:", window.location.href);
-    console.log("Fetching from:", "/posts.json");
+    if (import.meta.env.DEV) {
+      console.log("Loading posts from posts.json...");
+      console.log("Current URL:", window.location.href);
+      console.log("Fetching from:", "/posts.json");
+    }
     
     const response = await fetch("/posts.json");
-    console.log("Response status:", response.status);
-    console.log("Response ok:", response.ok);
+    if (import.meta.env.DEV) {
+      console.log("Response status:", response.status);
+      console.log("Response ok:", response.ok);
+    }
     
     if (!response.ok) {
       throw new Error(`Failed to fetch posts.json: ${response.status} ${response.statusText}`);
     }
     
     const postsData = await response.json();
-    console.log("Successfully loaded", postsData.length, "posts from posts.json");
-    console.log("First post:", postsData[0]);
+    if (import.meta.env.DEV) {
+      console.log("Successfully loaded", postsData.length, "posts from posts.json");
+      console.log("First post:", postsData[0]);
+    }
     
     // Convert the JSON data to BlogPost format
     const posts: BlogPost[] = postsData.map((post: any) => ({
@@ -182,25 +192,28 @@ const loadPostsFromJson = async (languageFilter: 'en' | 'so' | 'all' = 'all'): P
       readTime: post.readTime,
       language: post.language,
       slug: post.slug,
-      body: post.html // The JSON contains 'html' instead of 'body'
+      body: post.html, // The JSON contains 'html' instead of 'body'
+      translations: post.translations
     }));
     
-    console.log("Converted posts:", posts.length);
+    if (import.meta.env.DEV) console.log("Converted posts:", posts.length);
     
     // Filter posts by language
     const finalPosts = languageFilter === 'all' 
       ? posts 
       : posts.filter(post => post.language === languageFilter);
-    console.log(`Posts after language filter (${languageFilter}): ${finalPosts.length}`);
+    if (import.meta.env.DEV) console.log(`Posts after language filter (${languageFilter}): ${finalPosts.length}`);
     
     return finalPosts;
   } catch (error) {
-    console.error("Error loading posts from posts.json:", error);
-    console.error("Error details:", {
-      message: error.message,
-      stack: error.stack,
-      name: error.name
-    });
+    if (import.meta.env.DEV) {
+      console.error("Error loading posts from posts.json:", error);
+      console.error("Error details:", {
+        message: (error as any).message,
+        stack: (error as any).stack,
+        name: (error as any).name
+      });
+    }
     // Return empty array as final fallback
     return [];
   }

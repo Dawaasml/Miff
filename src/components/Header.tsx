@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Search, Globe, Menu, X, Youtube, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from '@/contexts/TranslationContext';
 import { loadBlogPosts, type BlogPost } from '@/lib/contentLoader';
 
@@ -15,17 +15,19 @@ const Header = () => {
   const { language, toggleLanguage, t } = useTranslation();
 
   // Load all posts for search
+  // Lazy-load posts only when search opens
   useEffect(() => {
+    if (!searchOpen) return;
     const loadPosts = async () => {
       try {
         const posts = await loadBlogPosts(language);
         setAllPosts(posts);
       } catch (error) {
-        console.error('Error loading posts for search:', error);
+        if (import.meta.env.DEV) console.error('Error loading posts for search:', error);
       }
     };
-    loadPosts();
-  }, [language]);
+    if (allPosts.length === 0) loadPosts();
+  }, [language, searchOpen]);
 
   // Close search dropdown when clicking outside
   useEffect(() => {
@@ -84,8 +86,9 @@ const Header = () => {
     setSearchResults([]);
   };
 
+  const location = useLocation();
   const navigationItems = [
-    { title: t('nav.health'), href: '/health', active: true },
+    { title: t('nav.health'), href: '/health' },
     { title: t('nav.parenting'), href: '/parenting' },
     { title: t('nav.baby-names'), href: '/baby-names' },
     { title: t('nav.education'), href: '/education' },
@@ -113,28 +116,29 @@ const Header = () => {
               className="sm:hidden h-8 w-auto object-contain"
               loading="eager"
             />
-			<span className="ml-3 text-base sm:text-lg font-semibold text-foreground whitespace-nowrap">Mifta Som Academy</span>
+			<span className="ml-3 text-base sm:text-lg font-semibold text-foreground whitespace-nowrap">Miftah Som Academy</span>
             <span className="sr-only">Miftah Som Academy</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-8">
-            {navigationItems.map((item) => (
-              <Link
-                key={item.href}
-                to={item.href}
-                className={`text-sm font-medium transition-colors hover:text-blue-600 relative group ${
-                  item.active
-                    ? 'text-blue-600'
-                    : 'text-text-secondary'
-                }`}
-              >
-                {item.title}
-                {item.active && (
-                  <div className="absolute -bottom-6 left-0 w-full h-0.5 bg-blue-600 rounded-full"></div>
-                )}
-              </Link>
-            ))}
+            {navigationItems.map((item) => {
+              const isActive = location.pathname.startsWith(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  to={item.href}
+                  className={`text-sm font-medium transition-colors hover:text-blue-600 relative group ${
+                    isActive ? 'text-blue-600' : 'text-text-secondary'
+                  }`}
+                >
+                  {item.title}
+                  {isActive && (
+                    <div className="absolute -bottom-6 left-0 w-full h-0.5 bg-blue-600 rounded-full"></div>
+                  )}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Right Side Actions */}
@@ -283,13 +287,13 @@ const Header = () => {
                   to={item.href}
                   onClick={() => setIsMenuOpen(false)}
                   className={`flex items-center justify-between px-4 py-3 text-sm font-medium transition-colors rounded-lg mx-2 ${
-                    item.active 
-                      ? 'text-blue-600 bg-blue-50' 
+                    location.pathname.startsWith(item.href)
+                      ? 'text-blue-600 bg-blue-50'
                       : 'text-text-secondary hover:text-blue-600 hover:bg-gray-50'
                   }`}
                 >
                   <span>{item.title}</span>
-                  {item.active && (
+                  {location.pathname.startsWith(item.href) && (
                     <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
                   )}
                 </Link>

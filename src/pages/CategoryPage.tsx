@@ -88,22 +88,53 @@ const CategoryPage = () => {
     const targetSlug = currentCategory;
     const filtered = allPosts.filter(p => nameToSlug(p.category) === targetSlug);
 
-    // Group by base slug and prefer current UI language
-    const normalizeBaseKey = (slug: string): string => slug.replace(/-so$/i, '');
-    const byBase = new Map<string, BlogPost[]>();
+    // Build canonical groups using translations mapping so we can pick correct language or skip
+    const slugToPost = new Map<string, BlogPost>();
+    for (const p of filtered) slugToPost.set(p.slug, p);
+
+    const canonicalKey = (p: BlogPost): string => {
+      const linked = p.translations ? Object.values(p.translations) : [];
+      const group = [p.slug, ...linked].map(s => s.replace(/-so$/i, ''));
+      return group.sort()[0];
+    };
+
+    const byCanonical = new Map<string, BlogPost[]>();
     for (const p of filtered) {
-      const baseFromTranslations = p.translations?.en || p.translations?.so;
-      const baseKey = baseFromTranslations || normalizeBaseKey(p.slug);
-      if (!byBase.has(baseKey)) byBase.set(baseKey, []);
-      byBase.get(baseKey)!.push(p);
+      const key = canonicalKey(p);
+      if (!byCanonical.has(key)) byCanonical.set(key, []);
+      byCanonical.get(key)!.push(p);
     }
+
     const selected: BlogPost[] = [];
-    for (const [, group] of byBase.entries()) {
-      const match = group.find(g => g.language === language) || group[0];
-      selected.push(match);
+    for (const [, group] of byCanonical.entries()) {
+      const exact = group.find(g => g.language === language);
+      if (exact) {
+        selected.push(exact);
+        continue;
+      }
+      const anyWithMapping = group.find(g => g.translations && g.translations[language]);
+      if (anyWithMapping) {
+        const slug = anyWithMapping.translations![language];
+        const mapped = slugToPost.get(slug);
+        if (mapped) {
+          selected.push(mapped);
+          continue;
+        }
+      }
+      // Otherwise skip to avoid mixing languages
     }
     selected.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-    return selected.length > 0 ? selected : allPosts;
+    // Ensure parity: if no selected match, fallback to English canonical selection of filtered set
+    if (selected.length === 0) {
+      const englishSelected: BlogPost[] = [];
+      for (const [, group] of byCanonical.entries()) {
+        const en = group.find(g => g.language === 'en') || group[0];
+        if (en) englishSelected.push(en);
+      }
+      englishSelected.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+      return englishSelected;
+    }
+    return selected;
   }, [allPosts, currentCategory, language]);
 
   return (

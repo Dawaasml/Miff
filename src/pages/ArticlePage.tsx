@@ -1,20 +1,20 @@
 import { useEffect, useMemo, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useParams } from 'react-router-dom';
 import Layout from '@/components/Layout';
 import Sidebar from '@/components/Sidebar';
 import ArticleCard from '@/components/ArticleCard';
 import { Calendar, User, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import { useTranslation } from '@/contexts/TranslationContext';
-import heroHealthImage from '@/assets/hero-health-nutrition.jpg';
-import heroParentingImage from '@/assets/hero-parenting.jpg';
-import heroQuranImage from '@/assets/hero-quran.jpg';
 import { loadBlogPosts, type BlogPost } from '@/lib/contentLoader';
+import { sanitizeHtml } from '@/lib/utils';
 
 const ArticlePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const { t, language } = useTranslation();
 
   const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [sanitized, setSanitized] = useState<string>('');
   useEffect(() => {
     let mounted = true;
     (async () => {
@@ -38,6 +38,16 @@ const ArticlePage = () => {
     }
     return base;
   }, [posts, slug, language]);
+
+  // Sanitize article body when it changes
+  useEffect(() => {
+    const run = async () => {
+      const html = article?.body || '';
+      const safe = await sanitizeHtml(html);
+      setSanitized(safe);
+    };
+    run();
+  }, [article?.body]);
   if (!article) {
     return (
       <Layout>
@@ -105,6 +115,13 @@ const ArticlePage = () => {
     <Layout>
       {/* Article Header */}
       <article className="container mx-auto px-4 py-8">
+        <Helmet>
+          <title>{article?.title ? `${article.title} | Miftah Som Academy` : 'Article | Miftah Som Academy'}</title>
+          {article?.excerpt && <meta name="description" content={article.excerpt} />}
+          {article?.image && <meta property="og:image" content={article.image} />}
+          {article?.title && <meta property="og:title" content={article.title} />}
+          {article?.excerpt && <meta property="og:description" content={article.excerpt} />}        
+        </Helmet>
         <div className="flex gap-8">
           {/* Main Article Content */}
           <div className="flex-1 max-w-4xl">
@@ -158,16 +175,16 @@ const ArticlePage = () => {
             {/* Social Share Bar - Floating Left */}
             <div className="hidden lg:block fixed left-8 top-1/2 transform -translate-y-1/2 z-10">
               <div className="flex flex-col gap-3 bg-background border border-border-light rounded-large p-3 shadow-sm">
-                <button className="p-2 text-text-secondary hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                <button aria-label="Share on Facebook" className="p-2 text-text-secondary hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
                   <Facebook className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-text-secondary hover:text-blue-400 hover:bg-blue-50 rounded transition-colors">
+                <button aria-label="Share on Twitter" className="p-2 text-text-secondary hover:text-blue-400 hover:bg-blue-50 rounded transition-colors">
                   <Twitter className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-text-secondary hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">
+                <button aria-label="Share on LinkedIn" className="p-2 text-text-secondary hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">
                   <Linkedin className="w-5 h-5" />
                 </button>
-                <button className="p-2 text-text-secondary hover:text-aljazeera-blue hover:bg-aljazeera-blue/10 rounded transition-colors">
+                <button aria-label="Copy share link" className="p-2 text-text-secondary hover:text-aljazeera-blue hover:bg-aljazeera-blue/10 rounded transition-colors">
                   <Share2 className="w-5 h-5" />
                 </button>
               </div>
@@ -176,7 +193,7 @@ const ArticlePage = () => {
             {/* Article Content */}
             <div 
               className="prose prose-lg max-w-none whitespace-pre-wrap"
-              dangerouslySetInnerHTML={{ __html: article?.body || '' }}
+              dangerouslySetInnerHTML={{ __html: sanitized }}
               style={{
                 lineHeight: '1.7',
                 fontSize: '1.125rem'
@@ -188,13 +205,13 @@ const ArticlePage = () => {
               <div className="flex items-center justify-center gap-4">
                 <span className="text-text-secondary text-sm font-medium">{t('article.share')}:</span>
                 <div className="flex gap-3">
-                  <button className="p-2 text-text-secondary hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
+                  <button aria-label="Share on Facebook" className="p-2 text-text-secondary hover:text-blue-600 hover:bg-blue-50 rounded transition-colors">
                     <Facebook className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-text-secondary hover:text-blue-400 hover:bg-blue-50 rounded transition-colors">
+                  <button aria-label="Share on Twitter" className="p-2 text-text-secondary hover:text-blue-400 hover:bg-blue-50 rounded transition-colors">
                     <Twitter className="w-5 h-5" />
                   </button>
-                  <button className="p-2 text-text-secondary hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">
+                  <button aria-label="Share on LinkedIn" className="p-2 text-text-secondary hover:text-blue-700 hover:bg-blue-50 rounded transition-colors">
                     <Linkedin className="w-5 h-5" />
                   </button>
                 </div>

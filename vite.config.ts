@@ -104,6 +104,7 @@ const generatePostsJson = () => {
             language: inferredLanguage,
             slug,
             html,
+            translations: (data as any).translations as Record<string, string> | undefined,
           };
         });
         posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
