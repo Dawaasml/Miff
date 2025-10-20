@@ -22,7 +22,11 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
-            <Suspense fallback={null}>
+            <Suspense fallback={
+              <div role="status" aria-live="polite" className="min-h-screen flex items-center justify-center">
+                <span className="text-text-secondary">Loading…</span>
+              </div>
+            }>
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/health" element={<CategoryPage />} />
