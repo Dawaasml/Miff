@@ -125,7 +125,15 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
           const fileName = path.split("/").pop() || "";
           const withoutExt = fileName.replace(/\.md$/i, "");
           // If filename starts with YYYY-MM-DD-, strip the date for slug
-          const slug = withoutExt.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+          const rawSlug = withoutExt.replace(/^\d{4}-\d{2}-\d{2}-/, "");
+          // Normalize punctuation and non-alphanumerics to ensure URL-safe slugs
+          let slug = rawSlug
+            .replace(/[\u2018\u2019\u2032]/g, "'")
+            .replace(/[\u2013\u2014\u2212]/g, '-')
+            .toLowerCase()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-|-$/g, '');
 
           // Infer language when missing based on filename suffix and Somali category labels
           const categoryValue = (data.category as string | undefined) ?? "General";

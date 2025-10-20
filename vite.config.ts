@@ -82,7 +82,14 @@ const generatePostsJson = () => {
 
   const toSlug = (filePath: string): string => {
     const base = path.basename(filePath).replace(/\.md$/, '');
-    return base.replace(/^[0-9]{4}-[0-9]{2}-[0-9]{2}-/, '');
+    let s = base.replace(/^[0-9]{4}-[0-9]{2}-[0-9]{2}-/, '');
+    // Normalize unicode punctuation to ASCII-friendly form
+    s = s.replace(/[\u2018\u2019\u2032]/g, "'"); // curly apostrophes to '
+    s = s.replace(/[\u2013\u2014\u2212]/g, '-'); // en/em/minus to '-'
+    // Lowercase and collapse non-word characters to '-'
+    s = s.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    s = s.replace(/-+/g, '-').replace(/^-|-$/g, '');
+    return s;
   };
 
   return {
