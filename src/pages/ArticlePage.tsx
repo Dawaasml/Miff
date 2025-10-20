@@ -35,12 +35,30 @@ const ArticlePage = () => {
   }, [language]);
 
   const article = useMemo(() => {
-    const base = posts.find(p => p.slug === slug);
+    const normalizeSlug = (s: string | undefined): string => {
+      if (!s) return '';
+      let out = s;
+      // Decode URI components if encoded
+      try { out = decodeURIComponent(out); } catch {}
+      // Normalize unicode punctuation (typographic apostrophes) to ASCII
+      out = out.replace(/[\u2018\u2019\u2032]/g, "'");
+      // Collapse repeated dashes
+      out = out.replace(/--+/g, '-');
+      // Trim
+      return out.trim();
+    };
+
+    const targetSlug = normalizeSlug(slug);
+
+    // Try exact and then normalized match
+    let base = posts.find(p => p.slug === targetSlug) 
+             || posts.find(p => normalizeSlug(p.slug) === targetSlug);
     if (!base) return undefined;
     // If a translation exists for current UI language, pick that one
-    const targetSlug = base.translations?.[language];
-    if (targetSlug) {
-      const translated = posts.find(p => p.slug === targetSlug);
+    const translatedTarget = base.translations?.[language];
+    if (translatedTarget) {
+      const translated = posts.find(p => p.slug === translatedTarget) 
+                       || posts.find(p => normalizeSlug(p.slug) === normalizeSlug(translatedTarget));
       if (translated) return translated;
     }
     return base;
