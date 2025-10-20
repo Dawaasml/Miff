@@ -41,10 +41,18 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
     console.log("Language filter:", languageFilter);
   }
   
-  // In production, prefer posts.json for reliability
+  // In production, try posts.json first; if it fails or returns no posts, fall back to dynamic import
   if (import.meta.env.PROD) {
-    console.log("Production environment detected, using posts.json directly");
-    return await loadPostsFromJson(languageFilter);
+    try {
+      const prodJsonPosts = await loadPostsFromJson(languageFilter);
+      if (Array.isArray(prodJsonPosts) && prodJsonPosts.length > 0) {
+        return prodJsonPosts;
+      }
+      if (import.meta.env.DEV) console.log("posts.json empty in production, attempting dynamic import fallback...");
+    } catch (err) {
+      if (import.meta.env.DEV) console.log("Failed to load posts.json in production:", err, "Falling back to dynamic import...");
+    }
+    // Fall through to dynamic import logic below
   }
   
   // For debugging, let's try posts.json first in development too
@@ -128,7 +136,7 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
             "Quraanka",
             "Magacyada Carruurta",
           ].some(label => label.toLowerCase() === categoryValue.toLowerCase());
-          const hasSomaliFilename = /(^|-)so$/i.test(withoutExt);
+          const hasSomaliFilename = /(^|- )so$/i.test(withoutExt);
           const inferredLanguage = (data as { language?: string } | undefined)?.language
             ?? (hasSomaliFilename || isSomaliCategory ? "so" : "en");
 
