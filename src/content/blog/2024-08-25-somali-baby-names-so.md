@@ -8,6 +8,9 @@ excerpt: Baadi magacyada dhaqanka ah ee carruurta, muhiimadda dhaqameedka, iyo
 author: Dr. Aisha Mohamed
 readTime: 6 daqiiqo oo akhris
 language: so
+translations:
+  en: 2024-08-25-somali-baby-names
+  so: 2024-08-25-somali-baby-names-so
 ---
 
 # Magacyada Soomaaliga: Dhaqanka iyo Macnaha Quruxda

@@ -10,7 +10,10 @@ excerpt: >-
   ku salaysan xogta.
 author: Dr. Amina Hassan
 readTime: 8 daqiiqo oo akhris
-language: en
+language: so
+translations:
+  en: 2025-01-15-essential-nutrition-guide
+  so: 2025-01-15-essential-nutrition-guide-so
 ---
 
 # Hagaha Caafimaadka: Dhiska Caadada Cuntada Caafimaadka ee Qoyska

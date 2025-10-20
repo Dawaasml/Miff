@@ -9,6 +9,9 @@ excerpt: Explore the rich tradition of Somali baby names, their beautiful
 author: Mr. Mifta
 readTime: 9 min read
 language: en
+translations:
+  en: 2024-08-25-somali-baby-names
+  so: 2024-08-25-somali-baby-names-so
 ---
 
 # Beautiful Somali Baby Names: Cultural Heritage and Modern Appeal

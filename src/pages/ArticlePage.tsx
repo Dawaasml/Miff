@@ -192,7 +192,7 @@ const ArticlePage = () => {
 
             {/* Article Content */}
             <div 
-              className="prose prose-lg max-w-none whitespace-pre-wrap"
+              className="prose prose-lg max-w-none"
               dangerouslySetInnerHTML={{ __html: sanitized }}
               style={{
                 lineHeight: '1.7',

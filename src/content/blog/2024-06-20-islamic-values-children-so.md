@@ -8,6 +8,9 @@ excerpt: Hababka dhaqanka ah oo loogu talagalay waalidiinta inay ku daraan
 author: Sheikh Abdullahi
 readTime: 7 daqiiqo oo akhris
 language: so
+translations:
+  en: 2024-06-20-islamic-values-children
+  so: 2024-06-20-islamic-values-children-so
 ---
 
 # Barista Carruurta Qiyamka Islaamka Guri

@@ -6,7 +6,10 @@ category: "Quran"
 excerpt: "Learn how to instill Islamic values in children through age-appropriate methods, creating a strong foundation for their spiritual and moral development."
 author: "Mr. Mifta"
 readTime: "11 min read"
-language: "en"
+language: en
+translations:
+  en: 2024-06-20-islamic-values-children
+  so: 2024-06-20-islamic-values-children-so
 ---
 
 # Teaching Islamic Values to Children: Building Character and Faith

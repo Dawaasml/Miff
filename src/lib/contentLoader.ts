@@ -38,6 +38,7 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
     console.log("=== Starting loadBlogPosts ===");
     console.log("Environment:", import.meta.env.MODE);
     console.log("Base URL:", import.meta.env.BASE_URL);
+    console.log("Language filter:", languageFilter);
   }
   
   // In production, prefer posts.json for reliability
@@ -46,13 +47,42 @@ export const loadBlogPosts = async (languageFilter: 'en' | 'so' | 'all' = 'all')
     return await loadPostsFromJson(languageFilter);
   }
   
+  // For debugging, let's try posts.json first in development too
+  console.log("Development environment, trying posts.json first...");
+  try {
+    const jsonPosts = await loadPostsFromJson(languageFilter);
+    if (jsonPosts.length > 0) {
+      console.log("Successfully loaded posts from posts.json in development");
+      return jsonPosts;
+    }
+  } catch (error) {
+    console.log("Failed to load posts.json in development:", error);
+    console.log("Trying dynamic imports...");
+  }
+  
   try {
     if (import.meta.env.DEV) console.log("Development environment, trying dynamic imports...");
     
     // Try different glob patterns to find the files
     const files = import.meta.glob("../content/blog/**/*.md", { query: "?raw", import: "default" });
     const entries = Object.entries(files);
-    if (import.meta.env.DEV) console.log("Found blog files:", entries.length, entries.map(([path]) => path));
+    if (import.meta.env.DEV) console.log("Found blog files with ../content/blog/:", entries.length, entries.map(([path]) => path));
+    
+    // If no files found, try the correct path from src/lib/
+    if (entries.length === 0) {
+      const correctFiles = import.meta.glob("../../content/blog/**/*.md", { query: "?raw", import: "default" });
+      const correctEntries = Object.entries(correctFiles);
+      if (import.meta.env.DEV) console.log("Found blog files with ../../content/blog/:", correctEntries.length, correctEntries.map(([path]) => path));
+      entries.push(...correctEntries);
+    }
+    
+    // Try absolute path from project root
+    if (entries.length === 0) {
+      const absoluteFiles = import.meta.glob("/src/content/blog/**/*.md", { query: "?raw", import: "default" });
+      const absoluteEntries = Object.entries(absoluteFiles);
+      if (import.meta.env.DEV) console.log("Found blog files with /src/content/blog/:", absoluteEntries.length, absoluteEntries.map(([path]) => path));
+      entries.push(...absoluteEntries);
+    }
     
     if (entries.length === 0) {
       if (import.meta.env.DEV) console.log("No blog files found, trying alternative pattern...");
