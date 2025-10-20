@@ -21,6 +21,13 @@ const ArticlePage = () => {
       // Load all posts then prefer current language via translations mapping
       const data = await loadBlogPosts('all');
       if (mounted) setPosts(data);
+      if (typeof window !== 'undefined') {
+        try {
+          // Minimal diagnostics to aid production debugging
+          // eslint-disable-next-line no-console
+          console.log('[ArticlePage] Loaded posts count:', data.length, 'slug:', slug, 'lang:', language, 'url:', window.location.href);
+        } catch {}
+      }
     })();
     return () => {
       mounted = false;
@@ -49,6 +56,22 @@ const ArticlePage = () => {
     run();
   }, [article?.body]);
   if (!article) {
+    // If no posts loaded at all, surface a clear, non-blank UI to aid debugging
+    if (posts.length === 0) {
+      return (
+        <Layout>
+          <div className="container mx-auto px-4 py-16">
+            <h1 className="text-2xl font-bold mb-4">No articles could be loaded</h1>
+            <p className="text-text-secondary mb-2">This can happen if the build didn’t generate posts.json and dynamic markdown fallback failed.</p>
+            <ul className="list-disc pl-6 text-text-secondary">
+              <li>Check that <a className="underline" href="/posts.json">/posts.json</a> is accessible.</li>
+              <li>Ensure content exists in <code>src/content/blog</code> on the deployed branch.</li>
+            </ul>
+          </div>
+        </Layout>
+      );
+    }
+
     return (
       <Layout>
         <div className="container mx-auto px-4 py-16">
